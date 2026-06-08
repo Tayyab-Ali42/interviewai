@@ -4,6 +4,7 @@ type InterviewAiContextProps = {
     role: string;
     summary: string;
     weakAreas: string[];
+    setRole: (role: string) => void;
 };
 
 type Props = {
@@ -15,7 +16,7 @@ export const InterviewAiContext =
     createContext<InterviewAiContextProps | null>(null);
 
 export const InterviewAiContextProvider = ({ children }: Props) => {
-    const [role] = useState("");
+    const [role, setRole] = useState("");
     const [summary] = useState("");
     const [weakAreas] = useState<string[]>([]);
 
@@ -25,6 +26,7 @@ export const InterviewAiContextProvider = ({ children }: Props) => {
                 role,
                 summary,
                 weakAreas,
+                setRole
             }}
         >
             {children}
